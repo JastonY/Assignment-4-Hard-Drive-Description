@@ -1,28 +1,131 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <iomanip>
 
-# Precompiled Headers
-*.gch
-*.pch
+using namespace std;
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+void trackFunction()
+{
+    int trackNum = 0;
+    const int TOTAL_TRACK_NUM = 22;
+    int additionalSector = 2;
+    int trackGroupNum = floor((trackNum)/4);
+    int baseSector = 8;
+    int totalSector = 0;
+    int numOfSector = (additionalSector * (trackGroupNum) + baseSector);
+    int sectorNum = 0;
+    
+    cout << " TESTING: Track Functions " << endl;
+    cout << " ------------------------ " << endl;
+    
+    cout << " Now displaying the [track #] to [sectors per track] mapping: " << endl;
+    cout << "Checking every sector at start." << endl;
+    cout << setw(3) << " Track #" << setw(3) << " Sector # " << endl;
+    
+    while(trackNum <= 21)
+    {
+        int numOfSector = ((additionalSector * (trackNum / 4)) + baseSector);
+        cout << setw(3) << trackNum << setw(10) << numOfSector << endl;
+        
+        trackNum++;
+        totalSector = totalSector + numOfSector;
+    }   
+    
+        cout << "Total # Sectors: " << totalSector << endl;
+    
+    
+} 
 
-# Fortran module files
-*.mod
+//void seekTime(int startTime, int endTime)
+    
+void testTrackFunctions() 
+{  
+    cout << "Now displaying the [sector number] to [track number] mapping: " << endl;
+    cout << "Checking every sector at start. " << endl;
+    cout << setw(3) << "sector" << setw(3) << "track" << endl;
+    
+    int baseSector = 8;
+    int currentTrackNum = 0;
+    int sectorNum = 0;
+    int trackNum = 0;
+    
+    cout <<  setw(3) << "Sector" << setw(10) << "Track" << endl;
+    
+    while(sectorNum <= 24)
+    {
+        currentTrackNum = sectorNum / baseSector ;
+        cout << setw(3) << sectorNum << setw(10) << currentTrackNum << endl;
+   
+        sectorNum++;
+    
+       
+    }
+    
+   if(sectorNum == 25) 
+   {   
+    
+    cout << "Checking every 13th sector." << endl;
+    cout << setw(3) << "Sector" << setw(10) << "Track" <<endl;
+    //I HAVE TO FIX THIS PART BELOW SO LEAVE IT FOR NOW UNLESS YOU KNOW HOW TO DO IT
+    //while(sectorNum <= 727)
+    {
+       // cout << setw(3) << sectorNum << setw(10) << trackNum;
+    }
+   }
+}
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+void rotationTimes()
+{
+    int rotationsPerMin = 0;
+    
+    //Calculating RPS from RPM
+    cout << " Please enter RPM: " ;
+    cin >> rotationsPerMin;
+    cout << endl;
+    float rotationsPerSec = (rotationsPerMin*60);
+    
+    cout << rotationsPerSec << endl;
+   
+}  
 
-# Executables
-*.exe
-*.out
-*.app
+ 
+void rotationalDelayTime()
+ {  
+    int rotationsPerMin = 0;
+    
+    //Calculating average rotational delay time in seconds
+    cout << " Please enter RPM: " ;
+    cin >> rotationsPerMin;
+    cout << endl;
+    float rotationsPerSec = (rotationsPerMin*60);
+    float rotationalDelay = (1/(rotationsPerSec)/2);
+    cout << " Rotational delay: " << rotationalDelay << endl;
+}
+
+void timeReadOneSector()
+{
+    int numOfSector = 0;
+    int rotationsPerSec = 0;
+    int trackNum = 0;
+    int readTime = 1 / rotationsPerSec / numOfSector;
+    int rotationsPerMin = 0;
+    
+    cout << "Please input track number: " << endl;
+    cin >> trackNum;
+    cout << endl;
+    cout << "Please input RPM: " << endl;
+    cin >> rotationsPerMin;
+}
+
+
+    int main()
+    {
+        trackFunction();
+        testTrackFunctions();    
+        
+        return 0;
+    }
+    
+    
+    
